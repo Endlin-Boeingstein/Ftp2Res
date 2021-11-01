@@ -29,17 +29,17 @@ class Program
 			if (args.Length > 0)
 			{
 				FileInfo fileInfo = new FileInfo(args[0]);
-				Console.WriteLine("版本号：1.0.0-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit");
+				Console.WriteLine("版本号：1.0.1-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit");
 				Console.WriteLine("文件路径：" + fileInfo.FullName + "一共一个问题，回车没反应则多按，1-2次即可，不要狂按错过过别的问题");
 				filepath = fileInfo.FullName;
 			}
 			//打开程序拖入窗体读取
 			else
 			{
-				Console.WriteLine("版本号：1.0.0-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit");
+				Console.WriteLine("版本号：1.0.1-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit");
 				Console.WriteLine("请将文件拖入窗体，并按回车键(一共两个问题，回车没反应则多按，1-2次即可，不要狂按错过过别的问题)");
-				Console.WriteLine("如果你的文件在C盘（尤其是桌面），那么请退出程序，直接将文件拖放到本应用的图标即可，拖窗体模式无权限修改C盘文件");
-				filepath = Console.ReadLine();
+				//新功能更新而停用//Console.WriteLine("如果你的文件在C盘（尤其是桌面），那么请退出程序，直接将文件拖放到本应用的图标即可，拖窗体模式无权限修改C盘文件");
+				filepath = Console.ReadLine().Trim('"');
 				///Console.WriteLine("文件路径：" + filepath);废弃代码，用了可能报错
 				///Console.Read();废弃代码，用了可能报错
 			}
