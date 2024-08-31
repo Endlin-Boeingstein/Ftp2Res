@@ -37,14 +37,14 @@ class Program
 			if (args.Length > 0)
 			{
 				FileInfo fileInfo = new FileInfo(args[0]);
-				Console.WriteLine("版本号：1.8.0-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit、Min_mozj、SMF Drummer、河里骑士、CERK、yyz、珂教永存");
+				Console.WriteLine("版本号：1.8.1-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit、Min_mozj、SMF Drummer、河里骑士、CERK、uuz、珂教永存");
 				Console.WriteLine("文件路径：" + fileInfo.FullName + "一共三个问题，回车没反应则多按，1-2次即可，不要狂按错过过别的问题");
 				filepath = fileInfo.FullName;
 			}
 			//打开程序拖入窗体读取
 			else
 			{
-				Console.WriteLine("版本号：1.8.0-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit、Min_mozj、SMF Drummer、河里骑士、CERK、yyz、珂教永存");
+				Console.WriteLine("版本号：1.8.1-public-alpha\t作者：Endlin Boeingstein（滨敔滨纵凝）\n编译时间：2021年9月6日14时02分\t协助调试：某Eight-Bit、Min_mozj、SMF Drummer、河里骑士、CERK、uuz、珂教永存");
 				Console.WriteLine("请将文件拖入窗体，并按回车键(一共四个问题，回车没反应则多按，1-2次即可，不要狂按错过过别的问题)");
 				//新功能更新而停用//Console.WriteLine("如果你的文件在C盘（尤其是桌面），那么请退出程序，直接将文件拖放到本应用的图标即可，拖窗体模式无权限修改C盘文件");
 				filepath = Console.ReadLine().Trim('"');
@@ -325,9 +325,10 @@ class Program
                     channel.Property("pivot").Remove();
                     //将frame尺寸参数Object化
                     JObject scaledata = (JObject)channel["frame"];
-                    //宝开化尺寸信息//20240810改写
+                    //宝开化尺寸信息//20240810改写//20240810废除
                     if (scaledata.ContainsKey("x"))
                     {
+                        /*废除宝开化20240831
                         if(scaledata.ContainsKey("w")&& scaledata.ContainsKey("h"))
                         {
                             if((int)scaledata["w"]>2&& (int)scaledata["h"] > 2)
@@ -340,9 +341,13 @@ class Program
                             }
                         }
                         else { }
+                        */
+                        //废除后添加20240831
+                        channel.Property("frame").AddBeforeSelf(new JProperty("ax", scaledata["x"]));
                     }
                     if (scaledata.ContainsKey("y"))
                     {
+                        /*废除宝开化20240831
                         if (scaledata.ContainsKey("w") && scaledata.ContainsKey("h"))
                         {
                             if ((int)scaledata["w"] > 2 && (int)scaledata["h"] > 2)
@@ -355,9 +360,13 @@ class Program
                             }
                         }
                         else { }
+                        */
+                        //废除后添加20240831
+                        channel.Property("frame").AddBeforeSelf(new JProperty("ay", scaledata["y"]));
                     }
                     if (scaledata.ContainsKey("w"))
                     {
+                        /*废除宝开化20240831
                         if (scaledata.ContainsKey("w") && scaledata.ContainsKey("h"))
                         {
                             if ((int)scaledata["w"] > 2 && (int)scaledata["h"] > 2)
@@ -370,11 +379,15 @@ class Program
                             }
                         }
                         else { }
+                        */
+                        //废除后添加20240831
+                        channel.Property("frame").AddBeforeSelf(new JProperty("aw", scaledata["w"]));
                         //卡槽自动判定计算20240308迁移至oc类
                         channel = oc.OffsetCalculate(channel, scaledata.Property("w"), isold, atlasname, idl, zoffset);
                     }
                     if (scaledata.ContainsKey("h"))
                     {
+                        /*废除宝开化20240831
                         if (scaledata.ContainsKey("w") && scaledata.ContainsKey("h"))
                         {
                             if ((int)scaledata["w"] > 2 && (int)scaledata["h"] > 2)
@@ -387,6 +400,9 @@ class Program
                             }
                         }
                         else { }
+                        */
+                        //废除后添加20240831
+                        channel.Property("frame").AddBeforeSelf(new JProperty("ah", scaledata["h"]));
                         //卡槽自动判定计算20240308迁移至oc类
                         channel = oc.OffsetCalculate(channel, scaledata.Property("h"), isold, atlasname, idl, zoffset);
                     }
